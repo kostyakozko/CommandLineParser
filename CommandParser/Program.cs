@@ -67,9 +67,16 @@ namespace CommandParser
                         do
                         {
                             ++i;
-                            if ((i + 1) < args.Length && !CheckCommand(args[i]) && !CheckCommand(args[i+1]))
+                            if ((i + 1) < args.Length && !CheckCommand(args[i]))
                             {
-                                Console.Out.WriteLine(args[i++]+" - "+args[i]);
+                                if (!CheckCommand(args[i + 1]))
+                                {
+                                    Console.Out.WriteLine(args[i++] + " - " + args[i]);
+                                }
+                                else
+                                {
+                                    Console.Out.WriteLine(args[i++] + " - " + "<null>");
+                                }
                             }
                             else
                             {
